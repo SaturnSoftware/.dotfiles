@@ -8,10 +8,8 @@ then
     if hash apt-get;
     then
         echo "Adding RCM to debian repos."
-        {
         wget -qO - https://apt.thoughtbot.com/thoughtbot.gpg.key | sudo apt-key add -
         echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
-        } &> /dev/null
         echo "Updating Package lists..."
         sudo apt-get -qq update
         echo "Installing..."
