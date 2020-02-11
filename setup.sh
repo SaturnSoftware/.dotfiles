@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if hash mkrc && [ "$1" != "-f" ];
+if hash mkrc;
 then
     echo "RCM found."
     else
@@ -14,5 +14,15 @@ then
         sudo apt-get -qq update
         echo "Installing..."
         sudo apt-get -qqy install rcm
+        echo "Done."
     fi
+fi
+if hash wget;
+then
+    echo "wget found."
+    else
+    echo "wget not found."
+    echo "Installing..."
+    sudo apt-get -qq 
+    echo "Done."
 fi
