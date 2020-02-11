@@ -10,7 +10,7 @@ then
         echo "Adding RCM to debian repos."
         wget -qO - https://apt.thoughtbot.com/thoughtbot.gpg.key | sudo apt-key add -
         echo "deb https://apt.thoughtbot.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/thoughtbot.list
-        echo "Updating Package lists..."
+        echo "Refreshing Packages..."
         sudo apt-get -qq update
         echo "Installing..."
         sudo apt-get -qqy install rcm
@@ -19,9 +19,11 @@ then
 fi
 if hash wget;
 then
-    echo "wget found."
+    echo "Wget found."
     else
-    echo "wget not found."
+    echo "Wget not found."
+    echo "Refreshing Packages..."
+    sudo apt-get update
     echo "Installing..."
     sudo apt-get -qqy install wget gnupg2 
     echo "Done."
