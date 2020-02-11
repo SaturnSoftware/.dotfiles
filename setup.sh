@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if hash wget;
+then
+    echo "Wget found."
+    else
+    echo "Wget not found."
+    echo "Refreshing Packages..."
+    sudo apt-get update
+    echo "Installing..."
+    sudo apt-get -qqy install wget gnupg2 
+    echo "Done."
+fi
 if hash mkrc;
 then
     echo "RCM found."
@@ -16,15 +27,4 @@ then
         sudo apt-get -qqy install rcm
         echo "Done."
     fi
-fi
-if hash wget;
-then
-    echo "Wget found."
-    else
-    echo "Wget not found."
-    echo "Refreshing Packages..."
-    sudo apt-get update
-    echo "Installing..."
-    sudo apt-get -qqy install wget gnupg2 
-    echo "Done."
 fi
