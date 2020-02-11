@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if hash wget;
+if hash wget &> /dev/null;
 then
     echo "Wget found."
     else
@@ -11,7 +11,7 @@ then
     sudo apt-get -qqy install wget gnupg2 
     echo "Done."
 fi
-if hash mkrc;
+if hash mkrc &> /dev/null;
 then
     echo "RCM found."
     else
