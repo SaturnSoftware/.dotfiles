@@ -23,6 +23,6 @@ then
     else
     echo "wget not found."
     echo "Installing..."
-    sudo apt-get -qq 
+    sudo apt-get -qqy install wget gnupg2 
     echo "Done."
 fi
