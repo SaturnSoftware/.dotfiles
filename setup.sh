@@ -1,9 +1,9 @@
 #!/bin/sh
 
-if [!mkrc -V]
+if [ !mkrc -V ]
 then
     echo "RCM not found."
-    if [apt-get -v]
+    if [ apt-get -v ]
     then
         echo "Adding RCM to debian repos."
         wget -qO - https://apt.thoughtbot.com/thoughtbot.gpg.key | sudo apt-key add -
