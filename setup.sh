@@ -6,7 +6,7 @@ then
     else
     echo "Wget not found."
     echo "Refreshing Packages..."
-    sudo apt-get update
+    sudo apt-get -qq update
     echo "Installing..."
     sudo apt-get -qqy install wget gnupg2 
     echo "Done."
