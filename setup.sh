@@ -1,6 +1,44 @@
 #!/bin/bash
 
-if hash wget &> /dev/null;
+<<INSTALLER
+sudo apt -qq update &&
+sudo apt -qqy install git &&
+git clone https://github.com/SaturnSoftware/.dotfiles.git &&
+cd .dotfiles &&
+chmod +x setup.sh &&
+./setup.sh
+INSTALLER
+
+echo -n "[sudo] password for $USER: "
+stty -echo
+
+charcount=0
+while IFS= read -p "$prompt" -r -s -n 1 ch
+do
+    if [[ $ch == $'\0' ]]; 
+    then
+        break
+    fi
+#Backspace
+    if [[ $ch == $'\177' ]];
+    then
+        if [ $charcount -gt 0 ];
+        then
+            charcount=$((charcount-1))
+            prompt=$'\b \b'
+            password="${password%?}"
+        else
+            PROMPT=''
+        fi
+    else
+        charcount=$((charcount+1))
+        prompt='*'
+        password+="$ch"
+    fi
+done
+stty echo
+
+if hash wget;
 then
     echo "Wget found."
     else
@@ -11,7 +49,7 @@ then
     sudo apt-get -qqy install wget gnupg2
     echo "Done."
 fi
-if hash mkrc &> /dev/null;
+if hash mkrc;
 then
     echo "RCM found."
     else
