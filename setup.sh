@@ -1,15 +1,5 @@
 #!/bin/bash
 
-<<INSTALLER
-sudo apt -qq update &&
-sudo apt -qqy install git &&
-cd &&
-git clone https://github.com/SaturnSoftware/.dotfiles.git &&
-cd .dotfiles &&
-chmod +x setup.sh &&
-./setup.sh
-INSTALLER
-
 if hash wget;
 then
     echo "Wget found."
